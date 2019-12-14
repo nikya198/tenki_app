@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'home/get_cities'
-  get 'try/new'
+  post 'home/index'
+  # get 'home/get_cities'
+  # get 'try/new'
 end

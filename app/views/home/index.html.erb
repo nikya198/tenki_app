@@ -1,7 +1,11 @@
 <div class="center jumbotron">
     <h1>Weather まとめ</h1>
-    <%= select_tag :prefecture_id, options_from_collection_for_select(Prefecture.all, :prefectureId, :prefectureName) %>
-    <%= select_tag :city_id, options_from_collection_for_select(City.all, :cityId, :cityName) %>
+    <%= form_with url: 'practice/index' do |form| %>
+    <%= select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :prefectureId, :prefectureName) %> 
+    <%= select_tag :city_id, options_from_collection_for_select(@cities, :cityId, :cityName) %>
+    <%= hidden_field_tag :city_id, options_from_collection_for_select(@cities, :wardId, :cityName) %>
+    <%= form.submit "検索"  %>
+    <% end %>
     <%# <select id="ward" class="hidden">
         <option value="14133">4610</option>
         <option value="14103">4610</option>

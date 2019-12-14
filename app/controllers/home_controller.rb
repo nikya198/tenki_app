@@ -5,6 +5,11 @@ class HomeController < ApplicationController
     @tomorrowArray = []
 
 
+    @prefectures = Prefecture.all
+    c=Prefecture.first
+    f=c.prefectureId
+    @cities = City.where(prefectureId: f)
+    # City.find_by(prefectureId: "mhartl@example.com")
     # 今日の天気（@niftu天気予報)
     url = 'https://weather.nifty.com/cs/catalog/weather_pinpoint/catalog_14131_1.htm'
     doc = Nokogiri::HTML(open(url).read)
@@ -129,6 +134,11 @@ class HomeController < ApplicationController
     end
 
     def get_cities
+      @city = City.where(prefectureId: params[:prefecture_id])
+      puts "ikuyadesu"
+      respond_to do |format|
+        format.js
+      end
     end
   end
 end 
