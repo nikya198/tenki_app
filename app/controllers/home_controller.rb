@@ -1,17 +1,31 @@
 class HomeController < ApplicationController
   def index
-    require 'open-uri'
-    @todayArray = []
-    @tomorrowArray = []
-
-
     @prefectures = Prefecture.all
     c=Prefecture.first
     f=c.prefectureId
     @cities = City.where(prefectureId: f)
-    # City.find_by(prefectureId: "mhartl@example.com")
+  end
+  def get_cities
+    @city = City.where(prefectureId: params[:prefecture_id])
+    # puts "ikuyadesu"
+    respond_to do |format|
+      format.js
+    end
+  end
+  def search
+    require 'open-uri'
+    @todayArray = []
+    @tomorrowArray = []
+
+    @prefectures = Prefecture.all
+    @cities = City.where(prefectureId: params[:prefecture_id])
+    a = City.find_by prefectureId: params[:prefecture_id]
+    ctiyId = a.cityId
+
+    params[:prefecture_id]
+    params[:ward_id]
     # 今日の天気（@niftu天気予報)
-    url = 'https://weather.nifty.com/cs/catalog/weather_pinpoint/catalog_14131_1.htm'
+    url = 'https://weather.nifty.com/cs/catalog/weather_pinpoint/catalog_'+params[:ward_id]+'_1.htm'
     doc = Nokogiri::HTML(open(url).read)
     tem_nodes = doc.css('//div[@id="todayWeather"]/div/table tr:nth-child(2) td/img/@alt').each_with_index do |node,i|
       @hash = {}
@@ -46,7 +60,8 @@ class HomeController < ApplicationController
     end
     
     # 今日の天気（yahoo天気）
-    url = 'https://weather.yahoo.co.jp/weather/jp/14/4610/14133.html'
+    url = 'https://weather.yahoo.co.jp/weather/jp/'+params[:prefecture_id]+'/'+ctiyId+'/'+params[:ward_id]+'.html'
+    # 'https://weather.yahoo.co.jp/weather/jp/14/4610/14133.html'
     doc = Nokogiri::HTML(open(url))
     doc.xpath('//div[@id="yjw_pinpoint_today"]/table[@class="yjw_table2"]/tr/td/img/@alt').each_with_index do |node,i|
       @hash=@todayArray[i]
@@ -76,7 +91,9 @@ class HomeController < ApplicationController
     end
     
     # 今日の天気（日本気象庁）
+    # https://weather.yahoo.co.jp/weather/jp/'+params[:prefecture_id]+'/'+ctiyId+'/'+params[:ward_id]+'.html'
     url = 'https://tenki.jp/forecast/3/17/4610/14133/3hours.html'
+    # 'https://tenki.jp/forecast/3/17/4610/14133/3hours.html'
     doc = Nokogiri::HTML(open(url))
     item_nodes = doc.xpath('//table[@id="forecast-point-3h-today"]/tr[@class="weather"]/td').each_with_index do |node,i|
       i+=1
@@ -133,12 +150,5 @@ class HomeController < ApplicationController
       end
     end
 
-    def get_cities
-      @city = City.where(prefectureId: params[:prefecture_id])
-      puts "ikuyadesu"
-      respond_to do |format|
-        format.js
-      end
-    end
   end
 end 

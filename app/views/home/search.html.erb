@@ -1,0 +1,69 @@
+<div class="center jumbotron">
+    <h1>Weather まとめ</h1>
+    <%= form_with url: 'home/index', local: true do |form| %>
+    <%= select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :prefectureId, :prefectureName, params[:prefecture_id]) %> 
+    <%= select_tag :ward_id, options_from_collection_for_select(@cities, :wardId, :cityName, params[:ward_id]) %>
+    <%= hidden_field_tag :city_id, options_from_collection_for_select(@cities, :cityId, :cityName) %>
+    <%= form.submit "検索"  %>
+    <% end %>
+    <h2>今日の天気</h2>
+    <table class="table">
+        <thead></thead>
+        <tr>
+            <th scope="col">時刻</th>
+            <th scope="col">天気</th>
+            <th scope="col">気温</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @todayArray.each_with_index do |text, i| %>
+            <tr>
+                <th scope="row"><%= i * 3%>時</th>
+                <td>
+                    <% if text["tenkiId" + i.to_s] == 1%>
+                    <%= image_tag("hare.png") %>
+                    <% elsif text["tenkiId" + i.to_s] == 2%>
+                    <%= image_tag("kumori.png") %>
+                    <% elsif text["tenkiId" + i.to_s] < 0%>
+                    -
+                    <% else %>
+                    <%= image_tag("ame.png") %>
+                    <% end %>
+                </td>
+                <td></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <h2>明日の天気</h2>
+    <table class="table">
+        <thead></thead>
+        <tr>
+            <th scope="col">時刻</th>
+            <th scope="col">天気</th>
+            <th scope="col">気温</th>
+        </tr>
+            </thead>
+            <tbody>
+                  <% @tomorrowArray.each_with_index do |text, i| %>
+                  <tr>
+                        <th scope="row"><%= i * 3%>時</th>
+                        <td>
+                              <% if text["tenkiId" + i.to_s] == 1%>
+                              <%= image_tag("hare.png") %>
+                              <% elsif text["tenkiId" + i.to_s] == 2%>
+                              <%= image_tag("kumori.png") %>
+                              <% elsif text["tenkiId" + i.to_s] < 0%>
+                              -
+                              <% else %>
+                              <%= image_tag("ame.png") %>
+                              <% end %>
+                            </td>
+                        <td></td>
+                        <%# <td>a</td> %>
+                      </tr>
+                  <% end %>
+                </tbody>
+          
+    </table>
+</div>
