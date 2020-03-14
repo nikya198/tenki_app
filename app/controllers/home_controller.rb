@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   def index
     @prefectures = Prefecture.all
-    c=Prefecture.first
-    f=c.prefectureId
+    c = Prefecture.first
+    f = c.prefectureId
     @cities = City.where(prefectureId: f)
   end
   def get_cities
@@ -91,8 +91,8 @@ class HomeController < ApplicationController
     end
     
     # 今日の天気（日本気象庁）
-    # https://weather.yahoo.co.jp/weather/jp/'+params[:prefecture_id]+'/'+ctiyId+'/'+params[:ward_id]+'.html'
-    url = 'https://tenki.jp/forecast/3/17/4610/14133/3hours.html'
+    prefectureIdKishoutyou = params[:prefecture_id].to_i + 3
+    url = 'https://tenki.jp/forecast/3/' + prefectureIdKishoutyou.to_s + '/' + ctiyId + '/' + params[:ward_id] + '/3hours.html'
     # 'https://tenki.jp/forecast/3/17/4610/14133/3hours.html'
     doc = Nokogiri::HTML(open(url))
     item_nodes = doc.xpath('//table[@id="forecast-point-3h-today"]/tr[@class="weather"]/td').each_with_index do |node,i|
