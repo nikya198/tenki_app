@@ -1,3 +1,3 @@
 class Prefecture < ApplicationRecord
-    has_many :cities, ->{ order(:prefectureId) 
+    # has_many :cities, ->{ order(:prefectureId) 
 end
