@@ -1,8 +1,8 @@
 <div class="center jumbotron">
     <%= form_with url: 'search', local: true, method: :get do |form| %>
-    <%= select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :prefectureId, :prefectureName, params[:prefecture_id]) %> 
-    <%= select_tag :ward_id, options_from_collection_for_select(@cities, :wardId, :cityName, params[:ward_id]) %>
-    <%= hidden_field_tag :city_id, options_from_collection_for_select(@cities, :cityId, :cityName) %>
+    <%= select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :prefecture_id, :prefecture_name, params[:prefecture_id]) %> 
+    <%= select_tag :ward_id, options_from_collection_for_select(@cities, :ward_id, :city_name, params[:ward_id]) %>
+    <%= hidden_field_tag :city_id, options_from_collection_for_select(@cities, :city_id, :city_name) %>
     <%= form.submit "検索"  %>
     <% end %>
     <h3>今日の天気</h3>

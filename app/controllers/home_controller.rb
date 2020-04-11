@@ -2,11 +2,11 @@ class HomeController < ApplicationController
   def index
     @prefectures = Prefecture.all
     c = Prefecture.first
-    f = c.prefectureId
-    @cities = City.where(prefectureId: f)
+    f = c.prefecture_id
+    @cities = City.where(prefecture_id: f)
   end
   def get_cities
-    @city = City.where(prefectureId: params[:prefecture_id])
+    @city = City.where(prefecture_id: params[:prefecture_id])
     # puts "ikuyadesu"
     respond_to do |format|
       format.js
@@ -18,9 +18,9 @@ class HomeController < ApplicationController
     @tomorrowArray = []
 
     @prefectures = Prefecture.all
-    @cities = City.where(prefectureId: params[:prefecture_id])
-    a = City.find_by prefectureId: params[:prefecture_id]
-    ctiyId = a.cityId
+    @cities = City.where(prefecture_id: params[:prefecture_id])
+    a = City.find_by prefecture_id: params[:prefecture_id]
+    ctiyId = a.city_id
 
     params[:prefecture_id]
     params[:ward_id]
