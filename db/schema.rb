@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200412035329) do
+ActiveRecord::Schema.define(version: 20200412040955) do
 
   create_table "cities", force: :cascade do |t|
     t.string "city_id"
     t.string "city_name"
     t.string "ward_id"
-    t.string "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "prefecture_id"
   end
 
   create_table "prefectures", force: :cascade do |t|
