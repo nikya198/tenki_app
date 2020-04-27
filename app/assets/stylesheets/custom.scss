@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 body {
-    padding-top: 60px;
+    padding-top: 70px;
   }
   
   section {
@@ -20,3 +20,78 @@ body {
   .center h1 {
     margin-bottom: 10px;
   }
+
+  h3 {
+    font-size: 1.2em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+    color: #777;
+  }
+/* header */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 2.5em;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  color: #fff;
+}
+
+#logo:hover {
+  color: #C0C0C0;
+  text-decoration: none;
+}
+
+/* footer */
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+@media screen and (max-width: 640px) {
+  img {
+    max-width: 90%;
+    height: auto;
+  }
+}
+/*Twitter*/
+.fa-twitter{
+  color:#1da1f2;
+  font-size: 1.5em;
+}
+
+.wrapper{
+  min-height: 80vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}

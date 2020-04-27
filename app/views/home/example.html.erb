@@ -1,0 +1,51 @@
+<div class="center jumbotron">  
+    <h3>今日の天気</h3> 
+    <div class="row">
+        <div class="col-xs-4 col-lg-12">
+            <div class="row">
+                <div class="col-xs-12 col-lg-1">時刻</div>
+                <div class="col-xs-12 col-lg-1">0時</div>
+                <div class="col-xs-12 col-lg-1">3時</div>
+                <div class="col-xs-12 col-lg-1">6時</div>
+                <div class="col-xs-12 col-lg-1">9時</div>
+                <div class="col-xs-12 col-lg-1">12時</div>
+                <div class="col-xs-12 col-lg-1">15時</div>
+                <div class="col-xs-12 col-lg-1">18時</div>
+                <div class="col-xs-12 col-lg-1">21時</div>
+                <div class="col-xs-12 col-lg-1">24時</div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-lg-12">
+            <div class="row">
+                <div class="col-xs-12 col-lg-1">天気</div>
+                <% @todayArray.each_with_index do |text, i| %>
+                    <div class="col-xs-12 col-lg-1">
+                        <% if text["tenkiId" + i.to_s] == 1%>
+                            <%= image_tag("hare.png") %><br><small>晴れ</small>
+                        <% elsif text["tenkiId" + i.to_s] == 2%>
+                            <%= image_tag("kumori.png") %><br><small>曇り</small>
+                        <% elsif text["tenkiId" + i.to_s] < 0%>
+                            <small>-</small>
+                        <% else %>
+                            <%= image_tag("ame.png") %><br><small>雨</small>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="col-xs-4 col-lg-12">
+            <div class="row">
+                <div class="col-xs-12 col-lg-1">気温</div>
+                <div class="col-xs-12 col-lg-1">0時</div>
+                <div class="col-xs-12 col-lg-1">3時</div>
+                <div class="col-xs-12 col-lg-1">6時</div>
+                <div class="col-xs-12 col-lg-1">9時</div>
+                <div class="col-xs-12 col-lg-1">12時</div>
+                <div class="col-xs-12 col-lg-1">15時</div>
+                <div class="col-xs-12 col-lg-1">18時</div>
+                <div class="col-xs-12 col-lg-1">21時</div>
+                <div class="col-xs-12 col-lg-1">24時</div>
+            </div>
+        </div>
+    </div>
+</div>

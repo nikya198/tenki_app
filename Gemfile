@@ -11,6 +11,7 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'jquery-ui-rails'
 gem 'nokogiri', require: 'nokogiri'
+gem 'font-awesome-sass', '~> 5.4.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

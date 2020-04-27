@@ -1,32 +1,26 @@
-<div class="center jumbotron">
-    <%= form_with url: 'search', local: true, method: :get do |form| %>
-    <%= select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :prefecture_id, :prefecture_name, params[:prefecture_id]) %> 
-    <%= select_tag :ward_id, options_from_collection_for_select(@cities, :ward_id, :city_name, params[:ward_id]) %>
-    <%= hidden_field_tag :city_id, options_from_collection_for_select(@cities, :city_id, :city_name) %>
-    <%= form.submit "検索"  %>
-    <% end %>
+<div class="container">
     <h3>今日の天気</h3>
-    <table class="table table-bordered" >
-     <tr valign=middle align=center bgcolor="#e9eefd">
-            <td width=100 bgcolor="#eeeeee">時刻</td>
-            <td bgcolor="#e9eefd" width=11%>0時</td>
-            <td bgcolor="#e9eefd" width=11%>3時</td>
-            <td bgcolor="#e9eefd" width=11%>6時</td>
-            <td bgcolor="#e9eefd" width=11%>9時</td>
-            <td bgcolor="#e9eefd" width=11%>12時</td>
-            <td bgcolor="#e9eefd" width=11%>15時</td>
-            <td bgcolor="#e9eefd" width=11%>18時</td>
-            <td bgcolor="#e9eefd" width=11%>21時</td>
-            <td bgcolor="#e9eefd" width=11%>2４時</td>
+    <table class="table">
+     <tr  valign=middle align=center>
+            <td width=1% bgcolor="#eeeeee">時刻</td>
+            <td width=11%>0時</td>
+            <td width=11%>3時</td>
+            <td width=11%>6時</td>
+            <td width=11%>9時</td>
+            <td width=11%>12時</td>
+            <td width=11%>15時</td>
+            <td width=11%>18時</td>
+            <td width=11%>21時</td>
+            <td width=11%>2４時</td>
      </tr>
-     <tr align=center bgcolor="#ffffff">
+     <tr  align=center bgcolor="#ffffff">
             <td  bgcolor="#eeeeee">天気</td>
             <% @todayArray.each_with_index do |text, i| %>
                 <td>
                     <% if text["tenkiId" + i.to_s] == 1%>
-                        <%= image_tag("hare.png") %><br><small>晴れ</small>
+                        <%= image_tag("hare.png") %><br><small>晴</small>
                     <% elsif text["tenkiId" + i.to_s] == 2%>
-                        <%= image_tag("kumori.png") %><br><small>曇り</small>
+                        <%= image_tag("kumori.png") %><br><small>曇</small>
                     <% elsif text["tenkiId" + i.to_s] < 0%>
                         <small>-</small>
                     <% else %>
@@ -48,28 +42,29 @@
             <td></td>
      </tr>
     </table>
+
     <h3>明日の天気</h3>
-        <table class="table table-bordered" >
-     <tr valign=middle align=center bgcolor="#e9eefd">
+    <table class="table" >
+     <tr valign=middle align=center>
             <td width=100 bgcolor="#eeeeee">時刻</td>
-            <td bgcolor="#e9eefd" width=11%>0時</td>
-            <td bgcolor="#e9eefd" width=11%>3時</td>
-            <td bgcolor="#e9eefd" width=11%>6時</td>
-            <td bgcolor="#e9eefd" width=11%>9時</td>
-            <td bgcolor="#e9eefd" width=11%>12時</td>
-            <td bgcolor="#e9eefd" width=11%>15時</td>
-            <td bgcolor="#e9eefd" width=11%>18時</td>
-            <td bgcolor="#e9eefd" width=11%>21時</td>
-            <td bgcolor="#e9eefd" width=11%>2４時</td>
+            <td width=11%>0時</td>
+            <td width=11%>3時</td>
+            <td width=11%>6時</td>
+            <td width=11%>9時</td>
+            <td width=11%>12時</td>
+            <td width=11%>15時</td>
+            <td width=11%>18時</td>
+            <td width=11%>21時</td>
+            <td width=11%>2４時</td>
      </tr>
      <tr align=center bgcolor="#ffffff">
             <td  bgcolor="#eeeeee">天気</td>
             <% @tomorrowArray.each_with_index do |text, i| %>
                 <td>
                     <% if text["tenkiId" + i.to_s] == 1%>
-                        <%= image_tag("hare.png") %><br><small>晴れ</small>
+                        <%= image_tag("hare.png") %><br><small>晴</small>
                     <% elsif text["tenkiId" + i.to_s] == 2%>
-                        <%= image_tag("kumori.png") %><br><small>曇り</small>
+                        <%= image_tag("kumori.png") %><br><small>曇</small>
                     <% elsif text["tenkiId" + i.to_s] < 0%>
                         <small>-</small>
                     <% else %>
@@ -90,4 +85,5 @@
             <td></td>
             <td></td>
      </tr>
+    </table>
 </div>
