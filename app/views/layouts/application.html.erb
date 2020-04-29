@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,11 +17,9 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="wrapper"> 
-      <div class="container">
-        <%= render 'layouts/index' %> 
-        <%= yield %>
-        <%= render 'layouts/footer' %>
-      </div>
+      <%= render 'layouts/index' %> 
+      <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
