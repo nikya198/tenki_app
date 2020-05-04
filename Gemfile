@@ -17,6 +17,10 @@ group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'byebug',  '9.0.6', platform: :mri
   gem 'factory_bot_rails', '~> 4.11'
+  gem 'rspec-rails', '~> 3.7.2'
+  gem 'capybara', '~> 2.16.1'
+  gem 'selenium-webdriver', '~> 3.8.0'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -32,7 +36,6 @@ group :test do
   gem 'minitest-reporters',       '1.1.14'
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
-  gem 'rspec-rails',           '~> 3.7'
 end
 
 group :production do
@@ -41,3 +44,4 @@ end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
